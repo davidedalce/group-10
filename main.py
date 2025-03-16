@@ -2,8 +2,8 @@ import streamlit as st
 import sys
 import os
 
-# Ensure Streamlit finds the pages directory
-sys.path.append(os.path.abspath("pages"))
+# Ensure Streamlit finds the pages directory (Update this if you renamed "pages/")
+sys.path.append(os.path.abspath("app_page"))
 
 # 🎨 Custom Styling
 st.markdown("""
@@ -17,15 +17,14 @@ st.markdown("""
 # 🎬 App Title
 st.title("🎬 CMU Movie Explorer")
 
-# 📌 Navigation (ONLY Keep This)
+# 📌 Sidebar Navigation (ONLY This Will Show)
 st.sidebar.markdown("## 🎬 Navigation")
 selected_page = st.sidebar.radio("Choose a Page:", ["Distribution Analysis", "Chronological Info", "Genre Classification"])
 
-# 🚀 Load the selected page
+# 🚀 Load the selected page dynamically
 if selected_page == "Distribution Analysis":
-    exec(open("./pages/page_1.py").read())
+    exec(open("app_page/page_1.py").read())
 elif selected_page == "Chronological Info":
-    exec(open("./pages/page_2.py").read())
+    exec(open("app_page/page_2.py").read())
 elif selected_page == "Genre Classification":
-    exec(open("./pages/page_3.py").read())
-
+    exec(open("app_page/page_3.py").read())
