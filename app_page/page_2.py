@@ -10,7 +10,7 @@ from movie_analyzer import MovieAnalyzer  # Import from models/
 def run():
     """Run the Streamlit page for Chronological Info."""
     
-    # 🎨 Custom Styling
+    #  Custom Styling
     st.markdown("""
         <style>
             h1, h2 { text-align: center; color: #32CD32; }
@@ -23,7 +23,7 @@ def run():
 
     analyzer = MovieAnalyzer()
 
-    # 📊 Movie Release Years
+    #  Movie Release Years
     st.header("🎬 Movie Releases Over Time", divider="green")
 
     genre_options = [None, 'Drama', 'Comedy', 'Romance Film', 'Black-and-white', 'Action', 
@@ -40,7 +40,7 @@ def run():
     else:
         st.line_chart(movie_data.set_index("Release Year"))
 
-    # 📊 Actor Birth Year & Month Distribution
+    #  Actor Birth Year & Month Distribution
     st.header("🎂 Actor Birth Trends", divider="green")
 
     selected_scale = st.radio("📆 Select Time Scale", ["Yearly Births", "Monthly Births"])
@@ -54,7 +54,7 @@ def run():
         st.altair_chart(c, use_container_width=True)
 
 
-# ✅ Ensure the script runs independently & in `main.py`
+#  Ensure the script runs independently & in `main.py`
 if __name__ == "__main__":
     run()
 
