@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import ollama
+import time
 
 sys.path.append(os.path.abspath("models"))
 from movie_analyzer import MovieAnalyzer  # Import from models/
