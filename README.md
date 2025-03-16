@@ -17,7 +17,6 @@ How to run the project:
 
 **STEP 1**: Clone the repository:
 git clone https://github.com/davidedalce/group-10.git
-cd group-10
 
 **STEP 2**: Install dependencies:
 pip install -r requirements.txt
