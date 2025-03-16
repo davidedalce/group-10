@@ -18,7 +18,7 @@ st.title("CMU Movies Dataset")
 
 # Set up shuffle button
 with st.container():
-    shuffle_button = st.button(label="Shuffle", type="primary", icon=":material/casino:", use_container_width=True)
+    st.button(label="Shuffle", type="primary", use_container_width=True)
 
 # Press button
 if shuffle_button:
