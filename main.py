@@ -1,12 +1,11 @@
 import streamlit as st
-import importlib
 import sys
 import os
 
 # Ensure Streamlit finds the pages directory
 sys.path.append(os.path.abspath("pages"))
 
-# 🏆 Custom Styling
+# 🎨 Custom Styling
 st.markdown("""
     <style>
         h1 { text-align: center; color: #FFA500; }
@@ -24,16 +23,9 @@ selected_page = st.sidebar.radio("Choose a Page:", ["Distribution Analysis", "Ch
 
 # 🚀 Load the selected page
 if selected_page == "Distribution Analysis":
-    with open("./pages/page_1.py") as f:
-        exec(f.read())
+    exec(open("./pages/page_1.py").read())
 elif selected_page == "Chronological Info":
-    with open("./pages/page_2.py") as f:
-        exec(f.read())
+    exec(open("./pages/page_2.py").read())
 elif selected_page == "Genre Classification":
-    with open("./pages/page_3.py") as f:
-        exec(f.read())
-# 🔄 Reload the module (useful if files are modified)
-importlib.reload(module)
+    exec(open("./pages/page_3.py").read())
 
-# Run the page
-module.run()
