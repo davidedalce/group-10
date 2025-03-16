@@ -1,20 +1,40 @@
 import streamlit as st
+import importlib
 import sys
 import os
 
-sys.path.append(os.path.abspath("pages"))  # Ensure the "pages" directory is accessible
+# Ensure Streamlit finds the pages directory
+sys.path.append(os.path.abspath("pages"))
 
-PAGES = {
-    "Distribution Analysis": "./pages/page_1.py",
-    "Chronological Analysis": "./pages/page_2.py",
-    "I'm Feeling Lucky": "./pages/page_3.py"
-}
+# 🏆 Custom Styling
+st.markdown("""
+    <style>
+        h1 { text-align: center; color: #FFA500; }
+        div[data-testid="stSidebar"] { background-color: #2A2A2A; }
+        [data-baseweb="button"] { background-color: #FF6347 !important; color: white !important; border-radius: 10px; }
+    </style>
+""", unsafe_allow_html=True)
 
-st.sidebar.title("Movie Analyzer")  # Sidebar title
-selection = st.sidebar.radio("Go to", list(PAGES.keys()))  # Sidebar navigation
+# 🎬 App Title
+st.title("🎬 CMU Movie Explorer")
 
-# Dynamically load the selected page
-if selection in PAGES:
-    with open(PAGES[selection]) as f:
-        exec(f.read())  # Execute the selected page
+# 📌 Sidebar Navigation
+st.sidebar.markdown("## 🎬 Navigation")
+selected_page = st.sidebar.radio(
+    "Choose a Page:", 
+    ["Distribution Analysis", "Chronological Info", "Genre Classification"]
+)
 
+# ✅ Dynamically Import the Selected Page
+if selected_page == "Distribution Analysis":
+    module = importlib.import_module("pages.page_1")
+elif selected_page == "Chronological Info":
+    module = importlib.import_module("pages.page_2")
+elif selected_page == "Genre Classification":
+    module = importlib.import_module("pages.page_3")
+
+# 🔄 Reload the module (useful if files are modified)
+importlib.reload(module)
+
+# Run the page
+module.run()
