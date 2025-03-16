@@ -54,17 +54,15 @@ if shuffle_button:
     st.write("**Release Date:**", analyzer.random_movie["release_date"])
     st.write("**Languages:**", f'{", ".join(analyzer.random_movie["languages"])}')
     st.write("**Countries:**", f'{", ".join(analyzer.random_movie["countries"])}')
-    
-    with st.chat_message(name="storyline", avatar=":material/movie:"):
-        st.text_area("Storyline suggested by AI", storyline['response'])
+    with st.chat_message(name="storyline", avatar="assistant"):
+    st.text_area("Storyline suggested by AI", storyline['response'])
 
-    with st.chat_message(name="genres", avatar=":material/category:"):
-        st.text_area("Genres from dataset", f'{", ".join(analyzer.random_movie["genres"])}')
-    
-    with st.chat_message(name="genres", avatar=":material/robot:"):
-        st.text_area("Genres suggested by AI", genres['response'])
-        st.text_area("Evaluation", evaluation['response'])
+with st.chat_message(name="genres", avatar="user"):
+    st.text_area("Genres from dataset", f'{", ".join(analyzer.random_movie["genres"])}')
 
+with st.chat_message(name="genres", avatar="assistant"):
+    st.text_area("Genres suggested by AI", genres['response'])
+    st.text_area("Evaluation", evaluation['response'])
     
     
     
