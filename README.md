@@ -9,9 +9,9 @@ STUDENTS:
 
 The application consists of:
 
--A Python class (MovieAnalyzer) to process and analyze movie data.
--A Streamlit web app with three pages for data visualization and classification.
--Integration with a local LLM (Ollama) to classify movie genres.
+-A Python class (MovieAnalyzer) to process and analyze movie data.  
+-A Streamlit web app with three pages for data visualization and classification.  
+-Integration with a local LLM (Ollama) to classify movie genres.  
 
 How to run the project:
 
