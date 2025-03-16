@@ -18,21 +18,20 @@ st.markdown("""
 # 🎬 App Title
 st.title("🎬 CMU Movie Explorer")
 
-# 📌 Sidebar Navigation
+# 📌 Navigation (ONLY Keep This)
 st.sidebar.markdown("## 🎬 Navigation")
-selected_page = st.sidebar.radio(
-    "Choose a Page:", 
-    ["Distribution Analysis", "Chronological Info", "Genre Classification"]
-)
+selected_page = st.sidebar.radio("Choose a Page:", ["Distribution Analysis", "Chronological Info", "Genre Classification"])
 
-# ✅ Dynamically Import the Selected Page
+# 🚀 Load the selected page
 if selected_page == "Distribution Analysis":
-    module = importlib.import_module("pages.page_1")
+    with open("./pages/page_1.py") as f:
+        exec(f.read())
 elif selected_page == "Chronological Info":
-    module = importlib.import_module("pages.page_2")
+    with open("./pages/page_2.py") as f:
+        exec(f.read())
 elif selected_page == "Genre Classification":
-    module = importlib.import_module("pages.page_3")
-
+    with open("./pages/page_3.py") as f:
+        exec(f.read())
 # 🔄 Reload the module (useful if files are modified)
 importlib.reload(module)
 
