@@ -11,7 +11,7 @@ from movie_analyzer import MovieAnalyzer  # Import from models/
 def run():
     """Run the Streamlit page for AI-based Genre Classification."""
     
-    # 🎨 Custom Styling
+    #  Custom Styling
     st.markdown("""
         <style>
             h1, h2 { text-align: center; color: #FF4500; }
@@ -32,7 +32,7 @@ def run():
 
     st.title("🎲 AI-Powered Genre Classifier")
 
-    # 📌 Shuffle Button with Cooldown
+    #  Shuffle Button with Cooldown
     if "last_click" not in st.session_state:
         st.session_state.last_click = 0
 
@@ -45,25 +45,25 @@ def run():
             movie_release_year = analyzer.random_movie["release_date"].year
             movie_genres = f'{", ".join(analyzer.random_movie["genres"])}'
 
-            # 🎭 Generate storyline
+            #  Generate storyline
             with st.spinner("🤖 Fetching AI-generated storyline..."):
                 storyline = ollama.generate(model='llama3.2', prompt=f"""You are requested to fetch the storyline/plot 
                                     of a given movie based on your knowledge. Respond with only the storyline. If not 
                                     found, reply 'No information'. \nThe movie is: {movie_name}, released in {movie_release_year}""")
 
-            # 🎭 Generate genres
+            #  Generate genres
             with st.spinner("📊 Classifying movie genres..."):
                 genres = ollama.generate(model='llama3.2', prompt=f"""Suggest up to 5 genres based on a given movie, 
                                 separated by commas. Respond only with genre names. \nThe movie is: {movie_name}, 
                                 released in {movie_release_year}""")
 
-            # 🧐 Evaluate classification result
+            #  Evaluate classification result
             with st.spinner("✅ Verifying classification accuracy..."):
                 evaluation = ollama.generate(model='llama3.2', prompt=f"""Compare classified genres {genres['response']} 
                                     to CMU Movie Dataset {movie_genres}. Respond in this format: 
                                     'Found: <matching genres> \n Not Found: <genres not matching>'.""")
 
-            # 🎬 Display Results
+            #  Display Results
             st.header(f"🎬 {movie_name} ({movie_release_year})", divider="blue")
 
             st.write("### Movie Summary")
@@ -117,7 +117,7 @@ def run():
         else:
             st.warning("🛑 Please wait a few seconds before shuffling again!")
 
-# ✅ Ensure the script runs independently & in `main.py`
+#  Ensure the script runs independently & in `main.py`
 if __name__ == "__main__":
     run()
 
