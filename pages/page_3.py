@@ -37,8 +37,8 @@ def run():
         st.session_state.last_click = 0
 
     if st.button("🔀 Shuffle Movie", use_container_width=True):
-        if (st.session_state.last_click + 3) < st.time():
-            st.session_state.last_click = st.time()
+        if (st.session_state.last_click + 3) < time.time():
+            st.session_state.last_click = time.time()
             with st.spinner("🔄 Selecting a random movie..."):
                 analyzer.randomize()
             movie_name = analyzer.random_movie["movie_name"]
