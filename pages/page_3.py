@@ -83,15 +83,44 @@ def run():
             with st.expander("🤖 AI-Predicted Genres"):
                 st.warning(genres['response'])
 
-            # Evaluation
-            with st.expander("🧐 AI vs Database Evaluation"):
-                st.error(evaluation['response'])
+            # 🧐 AI vs Database Evaluation (Updated)
+            st.subheader("🧐 AI vs Database Evaluation")
+
+            evaluation_text = evaluation['response']
+
+            # Extract found/not found genres properly
+            found_genres = []
+            not_found_genres = []
+
+            if "Found:" in evaluation_text:
+                found_part = evaluation_text.split("Found:")[1].split("\n")[0].strip()
+                found_genres = [genre.strip() for genre in found_part.split(",") if genre]
+
+            if "Not Found:" in evaluation_text:
+                not_found_part = evaluation_text.split("Not Found:")[1].strip()
+                not_found_genres = [genre.strip() for genre in not_found_part.split(",") if genre]
+
+            # Display in a clearer way
+            with st.expander("🔍 AI vs Database Evaluation Results"):
+                st.markdown("### ✅ Matched Genres")
+                if found_genres:
+                    st.success(", ".join(found_genres))
+                else:
+                    st.warning("No matches found.")
+
+                st.markdown("### ❌ AI-Predicted Genres NOT in Database")
+                if not_found_genres:
+                    st.error(", ".join(not_found_genres))
+                else:
+                    st.success("🎉 AI's predictions fully matched the database genres!")
+
         else:
             st.warning("🛑 Please wait a few seconds before shuffling again!")
 
 # ✅ Ensure the script runs independently & in `main.py`
 if __name__ == "__main__":
     run()
+
 
     
     
